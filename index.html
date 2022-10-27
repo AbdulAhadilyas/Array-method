@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="box1">
+        <button onclick="arrPush()" class="btn">push</button><br />
+        <button onclick="arrPop()" class="btn btn-success">pop</button><br />
+        <button onclick="arrUnShift()" class="btn btn-success">unshift</button
+        ><br />
+        <div class="input">
+          <button onclick="arrSplice()" class="btn btn-success">Splice</button>
+          <div class="inpubox">
+            <input type="number" id="input" placeholder="position to add" />
+          </div>
+          <div class="inpubox">
+            <input
+              type="number"
+              id="input1"
+              placeholder="enter index to delete iteam"
+            />
+          </div>
+        </div>
+        <div class="input">
+          <button onclick="arrSlice()" class="btn btn-success">Slice</button>
+          <div class="inpubox">
+            <input
+              type="number"
+              id="sliceInput"
+              placeholder="position to start"
+            />
+          </div>
+          <div class="inpubox">
+            <input
+              type="number"
+              id="iteamIndex"
+              placeholder="enter index to delete iteam"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="arrbox">
+        <div id="arr"></div>
+        <div id="retrun"></div>
+      </div>
+    </div>
+
+    <script>
+      let arr = [];
+      let arr1 = ["😀", "😃", "😄", "😁", "😆"];
+      let b = document.getElementById("arr");
+      const updateArr = () => {
+        arr1.map((val) => {
+          arr.push(val);
+          document.getElementById("arr").innerHTML = `[${arr1}]`;
+        });
+      };
+
+      console.log(arr);
+      const arrPop = () => {
+        arr1.pop();
+        console.log(arr1);
+        document.getElementById("arr").innerHTML = `[${arr1}]`;
+      };
+      let pushRandom = ["🌈", " 🍓", "👩‍❤️ ", "❤️", "☢️"];
+
+      const arrPush = () => {
+        let randomNum = Math.floor(Math.random() * pushRandom.length);
+        arr1.push(pushRandom[randomNum]);
+        console.log(arr1);
+        document.getElementById("arr").innerHTML = `[${arr1}]`;
+      };
+
+      const arrUnShift = () => {
+        let randomNum = Math.floor(Math.random() * pushRandom.length);
+        arr1.unshift(pushRandom[randomNum]);
+        document.getElementById("arr").innerHTML = `[${arr1}]`;
+        console.log(arr1);
+      };
+
+      const arrSplice = () => {
+        let range = document.getElementById("input").value;
+        let iteamDeletIndex = document.getElementById("input1").value;
+        let randomNum = Math.floor(Math.random() * pushRandom.length);
+        arr1.splice(range, iteamDeletIndex, pushRandom[randomNum]);
+        document.getElementById("arr").innerHTML = `[${arr1}]`;
+        console.log("click");
+        console.log(range);
+        console.log(pushRandom[randomNum]);
+      };
+      let c = [];
+      const arrSlice = () => {
+        let sliceInput = document.getElementById("sliceInput").value;
+        let iteamIndex = document.getElementById("iteamIndex").value;
+        let randomNum = Math.floor(Math.random() * pushRandom.length);
+        c = arr1.slice(sliceInput, iteamIndex);
+        console.log(c);
+        document.getElementById("retrun").innerHTML = `[${c}]`;
+      };
+
+      updateArr();
+    </script>
+  </body>
+</html>
